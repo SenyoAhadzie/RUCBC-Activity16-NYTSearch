@@ -78,11 +78,14 @@
         //Search Button Clicked
         $('#searchButton').on('click', function()
         {
+            $('#topArticlesCardBody').empty();
             console.log('clicked');
             var searchQuery = $('#searchTermInputField').val();
+            var startYear = parseInt($('#startYearOptionalInputField').val());
+            var endYear = parseInt($('#endYearOptionalInputField').val());
             console.log(searchQuery);
 
-            queryURL='https://api.nytimes.com/svc/search/v2/articlesearch.json?fq='+searchQuery+'&page=2&api-key=eLKjV4CGfZtDdd9rLGv9zkiNVEsDKfIG';
+            queryURL='https://api.nytimes.com/svc/search/v2/articlesearch.json?fq='+searchQuery+'&begin_date='+startYear+'0101&end_date='+endYear+'0101&page=2&api-key=eLKjV4CGfZtDdd9rLGv9zkiNVEsDKfIG';
 
             $.ajax({
                 url:queryURL,
